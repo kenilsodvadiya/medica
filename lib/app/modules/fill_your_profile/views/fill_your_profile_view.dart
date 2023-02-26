@@ -5,6 +5,7 @@ import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:image_picker/image_picker.dart';
 
+import '../../../routes/app_pages.dart';
 import '../controllers/fill_your_profile_controller.dart';
 
 class FillYourProfileView extends GetView<FillYourProfileController> {
@@ -96,6 +97,7 @@ class FillYourProfileView extends GetView<FillYourProfileController> {
                                         onTap: () {
                                           controller
                                               .pickImage(ImageSource.gallery);
+                                          Get.back();
                                         },
                                       ),
                                       ListTile(
@@ -104,6 +106,7 @@ class FillYourProfileView extends GetView<FillYourProfileController> {
                                         onTap: () {
                                           controller
                                               .pickImage(ImageSource.camera);
+                                          Get.back();
                                         },
                                       ),
                                     ],
@@ -270,20 +273,23 @@ class FillYourProfileView extends GetView<FillYourProfileController> {
                   height: 60,
                   width: MediaQuery.of(context).size.width,
                   child: ElevatedButton(
-                      style: ElevatedButton.styleFrom(
-                        shape: const StadiumBorder(),
-                        backgroundColor: Colors.indigo,
+                    style: ElevatedButton.styleFrom(
+                      shape: const StadiumBorder(),
+                      backgroundColor: Colors.indigo,
+                    ),
+                    onPressed: () {
+                      if (controller.globalKey.currentState!.validate()) {
+                        Get.toNamed(Routes.CREATE_PIN);
+                      }
+                    },
+                    child: Text(
+                      "Continue",
+                      style: GoogleFonts.urbanist(
+                        textStyle:
+                            const TextStyle(fontSize: 18, color: Colors.white),
                       ),
-                      onPressed: () {
-                        if (controller.globalKey.currentState!.validate()) {}
-                      },
-                      child: Text(
-                        "Sign In",
-                        style: GoogleFonts.urbanist(
-                          textStyle: const TextStyle(
-                              fontSize: 18, color: Colors.white),
-                        ),
-                      )),
+                    ),
+                  ),
                 ),
               ],
             ),

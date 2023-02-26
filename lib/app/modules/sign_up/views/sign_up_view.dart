@@ -57,6 +57,36 @@ class SignUpView extends GetView<SignUpController> {
                 height: 20,
               ),
               TextFormField(
+                controller: controller.phoneController,
+                decoration: InputDecoration(
+                  prefixIcon: const Icon(
+                    Icons.phone,
+                    color: Colors.grey,
+                  ),
+                  hintText: "Phone Number",
+                  fillColor: Colors.grey.shade100,
+                  filled: true,
+                  border: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(15),
+                  ),
+                  enabledBorder: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(15),
+                    borderSide: const BorderSide(
+                      color: Colors.white,
+                    ),
+                  ),
+                  hintStyle: GoogleFonts.urbanist(
+                    textStyle: const TextStyle(
+                      color: Colors.grey,
+                    ),
+                  ),
+                ),
+              ),
+              const SizedBox(
+                height: 10,
+              ),
+              TextFormField(
+                controller: controller.emailController,
                 decoration: InputDecoration(
                   prefixIcon: const Icon(
                     Icons.email_rounded,
@@ -82,7 +112,7 @@ class SignUpView extends GetView<SignUpController> {
                 ),
               ),
               const SizedBox(
-                height: 20,
+                height: 10,
               ),
               Obx(() => TextFormField(
                     obscureText: controller.visibility,
@@ -127,26 +157,27 @@ class SignUpView extends GetView<SignUpController> {
               const SizedBox(
                 height: 10,
               ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Obx(
-                    () => Checkbox(
-                        value: controller.isChecked,
-                        activeColor: Colors.indigo,
-                        onChanged: (value) {
-                          controller.isChecked = value!;
-                        }),
-                  ),
-                  Text(
-                    "Remember me",
-                    style: GoogleFonts.urbanist(
-                      textStyle:
-                          const TextStyle(fontSize: 15, color: Colors.black),
-                    ),
-                  )
-                ],
-              ),
+              // Row(
+              //   mainAxisAlignment: MainAxisAlignment.center,
+              //   children: [
+              //     Obx(
+              //       () => Checkbox(
+              //           value: controller.isChecked,
+              //           activeColor: Colors.indigo,
+              //           onChanged: (value) {
+              //             controller.isChecked = value!;
+              //           }),
+              //     ),
+              //     Text(
+              //       "Remember me",
+              //       style: GoogleFonts.urbanist(
+              //         textStyle:
+              //             const TextStyle(fontSize: 15, color: Colors.black),
+              //       ),
+              //     )
+              //   ],
+              // ),
+
               const SizedBox(
                 height: 15,
               ),
@@ -159,7 +190,7 @@ class SignUpView extends GetView<SignUpController> {
                       backgroundColor: Colors.indigo,
                     ),
                     onPressed: () {
-                      Get.toNamed(Routes.SIGN_IN);
+                      Get.toNamed(Routes.FILL_YOUR_PROFILE);
                     },
                     child: Text(
                       "Sign Up",
@@ -256,9 +287,11 @@ class SignUpView extends GetView<SignUpController> {
                       ),
                     ),
                     TextButton(
-                        onPressed: () {},
+                        onPressed: () {
+                          Get.toNamed(Routes.SIGN_IN);
+                        },
                         child: Text(
-                          "Sign up",
+                          "Sign in",
                           style: GoogleFonts.urbanist(
                             textStyle: const TextStyle(
                                 fontSize: 15,

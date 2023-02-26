@@ -1,6 +1,8 @@
 import 'package:get/get.dart';
+import 'package:medica/app/modules/sign_up/controllers/sign_up_controller.dart';
 
 class ForgotPasswordController extends GetxController {
+  final signUpData = Get.find<SignUpController>();
   final _borderCheck = false.obs;
   bool get borderCheck => _borderCheck.value;
   set borderCheck(bool value) => _borderCheck.value = value;

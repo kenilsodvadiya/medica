@@ -1,5 +1,5 @@
 import 'package:get/get.dart';
-import 'package:medica/app/modules/splach_screen2/views/splach_screen2_view.dart';
+import 'package:medica/app/routes/app_pages.dart';
 
 class SplachScreenController extends GetxController {
   @override
@@ -11,6 +11,6 @@ class SplachScreenController extends GetxController {
   void splach() {
     Future.delayed(
       const Duration(seconds: 3),
-    ).then((value) => Get.to(const SplachScreen2View()));
+    ).then((value) => Get.offNamed(Routes.SPLACH_SCREEN2));
   }
 }

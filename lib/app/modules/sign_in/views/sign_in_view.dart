@@ -273,7 +273,9 @@ class SignInView extends GetView<SignInController> {
                       ),
                     ),
                     TextButton(
-                        onPressed: () {},
+                        onPressed: () {
+                          Get.toNamed(Routes.SIGN_UP);
+                        },
                         child: Text(
                           "Sign up",
                           style: GoogleFonts.urbanist(

@@ -1,28 +1,10 @@
-import 'dart:async';
-
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:medica/app/modules/forgot_password/controllers/forgot_password_controller.dart';
-import 'package:medica/app/modules/sign_up/controllers/sign_up_controller.dart';
 import 'package:pinput/pinput.dart';
 
-class OtpVerificationController extends GetxController {
-  final signUpData = Get.find<SignUpController>();
-  final forgotData = Get.find<ForgotPasswordController>();
-  @override
-  void onInit() {
-    startTimer();
-    super.onInit();
-  }
-
-  @override
-  void onClose() {
-    startTimer();
-    super.onClose();
-  }
-
+class CreatePinController extends GetxController {
   final defaultPinTheme = PinTheme(
-    width: 56,
+    width: 65,
     height: 56,
     textStyle: const TextStyle(
         fontSize: 20,
@@ -36,7 +18,7 @@ class OtpVerificationController extends GetxController {
   );
 
   final focusedPinTheme = PinTheme(
-    width: 56,
+    width: 65,
     height: 56,
     textStyle: const TextStyle(
         fontSize: 20,
@@ -51,16 +33,4 @@ class OtpVerificationController extends GetxController {
     border: Border.all(color: const Color.fromRGBO(114, 178, 238, 1)),
     borderRadius: BorderRadius.circular(8),
   );
-
-  final _seconds = 60.obs;
-  int get seconds => _seconds.value;
-  set seconds(int value) => _seconds.value = value;
-
-  void startTimer() {
-    Timer.periodic(const Duration(seconds: 1), (timer) {
-      if (seconds > 0) {
-        seconds--;
-      }
-    });
-  }
 }

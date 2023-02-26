@@ -181,7 +181,7 @@ class SignInOptionView extends GetView<SignInOptionController> {
             margin: const EdgeInsets.symmetric(horizontal: 25),
             child: ElevatedButton(
               onPressed: () {
-                Get.toNamed(Routes.SIGN_UP);
+                Get.toNamed(Routes.SIGN_IN);
               },
               style: ElevatedButton.styleFrom(
                 shape: const StadiumBorder(),
@@ -210,7 +210,9 @@ class SignInOptionView extends GetView<SignInOptionController> {
                   ),
                 ),
                 TextButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      Get.toNamed(Routes.SIGN_UP);
+                    },
                     child: Text(
                       "Sign up",
                       style: GoogleFonts.urbanist(
