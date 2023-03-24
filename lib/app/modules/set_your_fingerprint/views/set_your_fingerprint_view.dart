@@ -3,6 +3,7 @@ import 'package:fluttertoast/fluttertoast.dart';
 
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:medica/app/routes/app_pages.dart';
 
 import '../controllers/set_your_fingerprint_controller.dart';
 
@@ -131,7 +132,9 @@ class SetYourFingerprintView extends GetView<SetYourFingerprintController> {
                     height: 55,
                     width: MediaQuery.of(context).size.width,
                     child: ElevatedButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        Get.offAllNamed(Routes.HOME);
+                      },
                       style: ElevatedButton.styleFrom(
                         shape: const StadiumBorder(),
                       ),

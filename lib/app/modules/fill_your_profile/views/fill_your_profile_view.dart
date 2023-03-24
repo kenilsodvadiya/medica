@@ -133,6 +133,7 @@ class FillYourProfileView extends GetView<FillYourProfileController> {
                   height: 25,
                 ),
                 TextFormField(
+                  controller: controller.nameController,
                   validator: (value) {
                     if (value == null || value.isEmpty) {
                       return "Please Enter a Full Name!!";
@@ -159,6 +160,7 @@ class FillYourProfileView extends GetView<FillYourProfileController> {
                   height: 25,
                 ),
                 TextFormField(
+                  controller: controller.nickNameController,
                   validator: (value) {
                     if (value == null || value.isEmpty) {
                       return "Please Enter a Nickname!!";
@@ -209,20 +211,18 @@ class FillYourProfileView extends GetView<FillYourProfileController> {
                   height: 25,
                 ),
                 TextFormField(
+                  controller: controller.mobileController,
                   validator: (value) {
-                    final bool emailValid = RegExp(
-                            r"^[a-z0-9.a-z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-z0-9]+\.[a-z]+")
-                        .hasMatch(value ?? '');
                     if (value == null || value.isEmpty) {
-                      return "Please Enter a email address";
-                    } else if (!emailValid) {
-                      return "Enter a valid email address";
+                      return "Please Enter a Mobile Number";
+                    } else if (value.length != 10) {
+                      return "Enter valid Mobile Number";
                     }
                     return null;
                   },
                   decoration: InputDecoration(
-                    hintText: "Email",
-                    suffixIcon: const Icon(Icons.email),
+                    hintText: "mobile number",
+                    suffixIcon: const Icon(Icons.call),
                     hintStyle: GoogleFonts.urbanist(),
                     fillColor: Colors.grey.shade100,
                     filled: true,
@@ -279,8 +279,9 @@ class FillYourProfileView extends GetView<FillYourProfileController> {
                     ),
                     onPressed: () {
                       if (controller.globalKey.currentState!.validate()) {
-                        Get.toNamed(Routes.CREATE_PIN);
+                      controller.storeUserData();
                       }
+                      // Get.toNamed(Routes.CREATE_PIN);
                     },
                     child: Text(
                       "Continue",
